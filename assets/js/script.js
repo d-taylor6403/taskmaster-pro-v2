@@ -6,7 +6,7 @@ var auditTask = function(taskEl) {
   //get date from task element
   var date = $(taskEl).find("span").text().trim();
   //ensure it worked
-  console.log(date);
+  //console.log(date);
 
   //convert to moment object at 5:00pm
   var time = moment(date, "L").set("hour", 17);
@@ -21,6 +21,8 @@ var auditTask = function(taskEl) {
   else if (Math.abs(moment().diff(time, "days"))<= 2) {
     $(taskEl).addClass("list-group-item-warning");
   }
+
+  console.log(taskEl);
 };
 
 var createTask = function(taskText, taskDate, taskList) {
@@ -58,7 +60,7 @@ var loadTasks = function() {
 
   // loop over object properties
   $.each(tasks, function(list, arr) {
-    console.log(list, arr);
+    //console.log(list, arr);
     // then loop over sub-array
     arr.forEach(function(task) {
       createTask(task.text, task.date, list);
@@ -268,20 +270,26 @@ $("#trash").droppable({
   accept: ".card .list-group-item",
   tolerance: "touch",
   drop: function(event, ui) {
-    console.log("drop")
+    //console.log("drop")
     ui.draggable.remove();
   },
   over: function(event, ui) {
-    console.log("over");
+    //console.log("over");
   },
   out: function(event, ui) {
-    console.log("out");
+    //console.log("out");
   }
 });
 
 $("#modalDueDate").datepicker({
   //minDate: 0
 });
+
+setInterval(function() {
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  })
+}, (1000 *60)*30); //1000 milliseconds *60 = 1 minute. *30 = 30 minutes
 
 // load tasks for the first time
 loadTasks();
