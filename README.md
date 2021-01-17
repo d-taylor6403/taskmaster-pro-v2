@@ -7,7 +7,7 @@ The purpose of this exercise was to JavaScript, JQuery, JQuery UI and JQuery Tou
 The deployed website can be found here: [Task Master Pro V2](https://d-taylor6403.github.io/taskmaster-pro-v2/)
 
 
-## Table of COntents
+## Table of Contents
 
 * [Technologies Used](#Technologies)
 * [Installation](#installation)
