@@ -42,7 +42,7 @@ The following steps should be completed to utilize this repo as a template for o
 
 ## Demonstration
 
-![Animated Demo]()
+![Animated Demo](https://github.com/d-taylor6403/taskmaster-pro-v2/blob/main/assets/Taskmaster%20Pro.gif)
 
 
 ## Credits
