@@ -10,17 +10,20 @@ var auditTask = function(taskEl) {
 
   //convert to moment object at 5:00pm
   var time = moment(date, "L").set("hour", 17);
-  
-  //remove any old classes from element
-  $(taskEl).removeClass("list-group-item-warning list-group-item-danger");
 
-  //apply new class if task is near/over due date
-  if (moment().isAfter(time)) {
-    $(taskEl).addClass("list-group-item-danger");
+  //remove any old classes from element
+  $(taskEl).removeClass("list-group-item-warning list-group-item-danger list-group-item-success");
+
+  //apply new class if task is current/near/over due date
+  if (Math.abs(moment().diff(time, "days")) >= 2) { //if due date is two days from current date/time
+    $(taskEl).addClass("list-group-item-success");
   }
-  else if (Math.abs(moment().diff(time, "days"))<= 2) {
+  else if (moment().isBefore(time, 'day')) { //if due date is 1 day before due date
     $(taskEl).addClass("list-group-item-warning");
   }
+  else if (moment().isAfter(time)) { //if due date has expired
+    $(taskEl).addClass("list-group-item-danger");
+  };
 
   console.log(taskEl);
 };
@@ -166,7 +169,7 @@ $(".list-group").on("click", "span", function() {
 
   //enable jquery ui datepicker
   dateInput.datepicker({
-   //minDate: 0,
+    //minDate: 0,
     onClose: function() {
       //when calendar is closed, force a change event on the `dateInput`
       $(this).trigger("change");
@@ -228,7 +231,7 @@ $(".card .list-group").sortable({
   },
   over: function(event) {
     $(event.target).addClass("dropover-active");
-    
+
   },
   out: function(event) {
     $(event.target).removeClass("dropover-active")
@@ -293,7 +296,7 @@ setInterval(function() {
   $(".card .list-group-item").each(function(index, el) {
     auditTask(el);
   })
-}, (1000 *60)*30); //1000 milliseconds *60 = 1 minute. *30 = 30 minutes
+}, (1000 * 60) * 30); //1000 milliseconds *60 = 1 minute. *30 = 30 minutes
 
 // load tasks for the first time
 loadTasks();
