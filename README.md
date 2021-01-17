@@ -4,7 +4,7 @@
  
 The purpose of this exercise was to JavaScript, JQuery, JQuery UI and JQuery Touch and Punch to create a task tracker/ kanban board hybrid. The Task Master Pro also utilizes MomentJS and javaScript timers to indicate which due dates are current, which due dates are nearing and which due dates have expired. 
 
-The deployed website can be found here: [RunBuddyRun](https://d-taylor6403.github.io/taskmaster-pro-v2/)
+The deployed website can be found here: [Task Master Pro V2](https://d-taylor6403.github.io/taskmaster-pro-v2/)
 
 
 ## Table of COntents
